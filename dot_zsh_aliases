@@ -1,0 +1,2 @@
+alias l='colorls -A --sd'
+alias ll='colorls -lA --sd'
