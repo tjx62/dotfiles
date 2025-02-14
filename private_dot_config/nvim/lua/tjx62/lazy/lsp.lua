@@ -20,6 +20,7 @@ return {
           'biome',
           'ruff',
           'pyright',
+	  'terraform-ls',
         },
 			})
 		end,
