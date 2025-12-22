@@ -18,7 +18,6 @@ return {
           'docker_compose_language_service',
           'eslint',
           'biome',
-          'ruff',
           'pyright',
           'jsonls',
         },
@@ -63,10 +62,10 @@ return {
 				capabilities = capabilities,
 				cmd = { "ruff", "server" },
 				filetype = { "python" },
-				root_dir = function(fname)
-					return require("lspconfig.util").root_pattern("pyproject.toml", "ruff.toml", ".ruff.toml")(fname)
-						or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
-				end,
+				-- root_dir = function(fname)
+				-- 	return require("lspconfig.util").root_pattern("pyproject.toml", "ruff.toml", ".ruff.toml")(fname)
+				-- 		or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
+				-- end,
 				single_file_support = true,
 				settings = {},
 				init_options = {
