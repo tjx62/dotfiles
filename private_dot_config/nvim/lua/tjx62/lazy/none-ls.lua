@@ -6,7 +6,6 @@ return {
       null_ls.setup({
         sources = {
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.jq,
           null_ls.builtins.formatting.black,
         },
       })
@@ -21,7 +20,7 @@ return {
     },
     config = function()
       require("mason-null-ls").setup({
-        ensure_installed = { "stylua", "jq", "black" },
+        ensure_installed = { "stylua", "jsonls", "black" },
       }) -- require your null-ls config here (example below)
     end,
   },

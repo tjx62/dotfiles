@@ -20,6 +20,7 @@ return {
           'biome',
           'ruff',
           'pyright',
+          'jsonls',
         },
 			})
 		end,
@@ -28,7 +29,6 @@ return {
 		"neovim/nvim-lspconfig",
     dependencies = {'hrsh7th/cmp-nvim-lsp'},
 		config = function()
-			local lspconfig = require("lspconfig")
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local on_attach = function(client, bufnr)
@@ -47,7 +47,7 @@ return {
       end
 
 
-			lspconfig.bashls.setup({
+			vim.lsp.config('bashls', {
 				capabilities = capabilities,
 				filetypes = { "sh", "bash", "zsh" },
 				settings = {
@@ -56,8 +56,9 @@ return {
 					},
 				},
 			})
+      vim.lsp.enable('bashls')
 
-			lspconfig.ruff.setup({
+			vim.lsp.config('ruff', {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				cmd = { "ruff", "server" },
@@ -74,8 +75,9 @@ return {
 					},
 				},
 			})
+      vim.lsp.enable('ruff')
 
-			lspconfig.clangd.setup({
+			vim.lsp.config('clangd', {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				cmd = {
@@ -86,8 +88,9 @@ return {
 					"--header-insertion=iwyu",
 				},
 			})
+      vim.lsp.enable('clangd')
 
-			lspconfig.gopls.setup({
+			vim.lsp.config('gopls', {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
@@ -101,8 +104,9 @@ return {
 					},
 				},
 			})
+      vim.lsp.enable('gopls')
 
-			lspconfig.biome.setup({
+			vim.lsp.config('biome', {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
@@ -116,8 +120,9 @@ return {
 					},
 				},
 			})
+      vim.lsp.enable('biome')
 
-			lspconfig.pyright.setup({
+			vim.lsp.config('pyright', {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
@@ -129,8 +134,9 @@ return {
           },
 				},
 			})
+      vim.lsp.enable('pyright')
 
-			lspconfig.lua_ls.setup({
+			vim.lsp.config('lua_ls', {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
@@ -144,8 +150,9 @@ return {
 					},
 				},
 			})
+      vim.lsp.enable('lua_ls')
 
-			lspconfig.rust_analyzer.setup({
+			vim.lsp.config('rust-analyzer', {
 				on_attach = on_attach,
 				capabilities = capabilities,
 				settings = {
@@ -168,6 +175,8 @@ return {
 					},
 				},
 			})
+      vim.lsp.enable('rust-analyzer')
+
 		end,
 	},
 }
